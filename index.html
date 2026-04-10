@@ -385,7 +385,7 @@
       // ── Name from URL query param (?name=Kiran) ──────────────────────────
       const params = new URLSearchParams(window.location.search);
       const name = (params.get("name") || "Jaanu").trim();
-      const nameJi = name + " ji";
+      const nameJi = name;
 
       document.querySelectorAll("#nameDisplay, #nameFinal").forEach((el) => {
         el.textContent = nameJi;
