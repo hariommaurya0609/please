@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Be My Valentine 💘</title>
+    <title>Valentine 💘</title>
     <style>
       *,
       *::before,
@@ -316,11 +316,11 @@
           alt="Cute kitten with flowers"
         />
       </div>
-      <h1>Will you be my Valentine?</h1>
-      <p class="subtitle">My heart beats faster waiting for your answer 💓</p>
+      <h1><span id="nameDisplay"></span>, kya aap meri Valentine banoge? 💘</h1>
+      <p class="subtitle">Thoda sa time do, dil meri baat sun lo… 🥹</p>
       <div class="btn-row" id="btnRow">
-        <button id="yesBtn" class="bounce">YES 💖</button>
-        <button id="noBtn">NO 😒</button>
+        <button id="yesBtn" class="bounce">Haan ji! 💖</button>
+        <button id="noBtn">Nahi 😒</button>
       </div>
     </div>
 
@@ -331,11 +331,13 @@
         src="https://cdn.jsdelivr.net/gh/CodeKageHQ/Ask-out-your-Valentine@588f7d920751b6ba9e0e7babecc8904fc467a595/images/image7.gif"
         alt="Happy kitten celebrating"
       />
-      <div class="final-title">You Said YES! 💘</div>
+      <div class="final-title">
+        <span id="nameFinal"></span> ne haan bola! 💘
+      </div>
       <p class="final-msg">
-        My heart just did a little happy dance 💫<br />
-        You are, without a doubt, the best thing that ever happened to me.<br />
-        Now it's official — you're stuck with me forever 😌💖
+        Dekha! Mujhe pata tha tum "haan" bologe 😌💫<br />
+        Ab tum officially meri Valentine ho, no take-backs! 🎉<br />
+        Tumse pyaar karna meri sabse acchi hobby hai ❤️
       </p>
       <div class="final-icons">✨💖🎉💫❤️</div>
     </div>
@@ -380,13 +382,24 @@
       const DEADZONE = 0.15;
 
       // NO button messages — escalating desperation
+      // ── Name from URL query param (?name=Kiran) ──────────────────────────
+      const params = new URLSearchParams(window.location.search);
+      const name = (params.get("name") || "Jaanu").trim();
+      const nameJi = name + " ji";
+
+      document.querySelectorAll("#nameDisplay, #nameFinal").forEach((el) => {
+        el.textContent = nameJi;
+      });
+
+      document.title = nameJi + " ki Valentine 💘";
+
       const noLabels = [
-        "NO 😒", // 0 – initial
-        "Are you sure? 🥺", // after click 1
-        "Pookie please 😢", // after click 2
-        "Pookie please 😢", // after click 3 — chaos activates
-        "You're breaking my heart 💔", // after click 4
-        "STOP 😭💔", // after click 5+
+        "Nahi 😒", // 0 – initial
+        "Sach mein? 🥺", // after click 1
+        `${nameJi}… please 😢`, // after click 2
+        `${nameJi}… please 😢`, // after click 3 — chaos activates
+        "Dil tod diya tumne 💔", // after click 4
+        "Ruk jao! Rona aa jayega 😭💔", // after click 5+
       ];
 
       // ── NO button: click ───────────────────────────────────────────────────
