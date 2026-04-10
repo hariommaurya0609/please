@@ -192,6 +192,32 @@
         }
       }
 
+      /* ── GitHub share button (final screen) ── */
+      #githubBtn {
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        backdrop-filter: blur(4px);
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+        white-space: nowrap;
+      }
+
+      #githubBtn:hover {
+        background: rgba(255, 255, 255, 0.38);
+        transform: scale(1.05);
+      }
+
       /* ── Final screen ── */
       #finalScreen {
         position: fixed;
@@ -326,6 +352,14 @@
 
     <!-- ── Final romantic screen ── -->
     <div id="finalScreen">
+      <a
+        id="githubBtn"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Want to send this to your special someone too? 😏"
+        >😏 Want to steal this?</a
+      >
       <img
         class="final-gif"
         src="https://cdn.jsdelivr.net/gh/CodeKageHQ/Ask-out-your-Valentine@588f7d920751b6ba9e0e7babecc8904fc467a595/images/image7.gif"
@@ -344,6 +378,9 @@
 
     <script>
       "use strict";
+
+      // ── 🔧 CHANGE THIS to your GitHub Pages / repo URL ─────────────────────
+      const GITHUB_URL = "https://github.com/hariommaurya0609/please";
 
       const yesBtn = document.getElementById("yesBtn");
       const noBtn = document.getElementById("noBtn");
@@ -606,7 +643,9 @@
 
       // ── Final romantic screen ───────────────────────────────────────────────
       function showFinalScreen() {
-        document.getElementById("finalScreen").classList.add("show");
+        const screen = document.getElementById("finalScreen");
+        document.getElementById("githubBtn").href = GITHUB_URL;
+        screen.classList.add("show");
         setTimeout(fireHeartConfetti, 500); // second heart burst on reveal
         spawnHearts();
         spawnConfetti();
